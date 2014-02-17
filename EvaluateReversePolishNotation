@@ -1,0 +1,38 @@
+public class Solution {
+    public int evalRPN(String[] tokens) {
+        Stack<String>terms;
+        int num1,num2;
+        int res;
+        terms=new Stack<String>();
+        char op;
+        for(int i=0;i<tokens.length;i++){
+          op=tokens.charAt(0);
+          switch(op){
+            case '+':
+              num2=Integer.parseInt(terms.pop());
+              num1=Integer.parseInt(terms.pop());
+              terms.push(""+(num1+num2));
+              break;
+            case '-':
+              num2=Integer.parseInt(terms.pop());
+              num1=Integer.parseInt(terms.pop());
+              terms.push(""+(num1-num2));
+              break;
+            case '*':
+              num2=Integer.parseInt(terms.pop());
+              num1=Integer.parseInt(terms.pop());
+              terms.push(""+(num1*num2));
+              break;
+            case '/':
+              num2=Integer.parseInt(terms.pop());
+              num1=Integer.parseInt(terms.pop());
+              terms.push(""+(num1/num2));
+              break;
+            default:
+              terms.push(tokens[i]);
+          }
+        }
+        res=Integer.parseInt(terms.pop());
+        return res;
+    }
+}
