@@ -6,7 +6,10 @@ public class Solution {
         terms=new Stack<String>();
         char op;
         for(int i=0;i<tokens.length;i++){
-          op=tokens.charAt(0);
+          op=tokens[i].charAt(0);
+          if(tokens[i].length()>1){//remove the effect of negative numbers.
+              op='0';
+          }
           switch(op){
             case '+':
               num2=Integer.parseInt(terms.pop());
